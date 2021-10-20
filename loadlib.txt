@@ -1,0 +1,48 @@
+load lib online 
+code in StaticActivity 
+public void boss2(final Context context){
+               
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                    @Override
+                                public void run() {
+   context.startService(new Intent(context, FloatingModMenuService.class)); 
+                    }
+                }, 10000);
+  
+ }
+ 
+ 
+ 
+ 
+code in FloatingModMenuService
+ 
+public void onDestroy() {
+        
+  
+ 
+  new File(getFilesDir(), "loader.dat").delete();
+  new File(getFilesDir(), "/oat/loader.dat.cur.prof").delete();
+  
+  
+  
+  
+        super.onDestroy();
+    }
+ 
+ 
+ 
+public void boss(Context context){
+
+
+
+  System.load(new File(context.getFilesDir(),  "loader.dat").getAbsolutePath());
+ }
+ 
+ 
+ 
+ call rules
+ 
+ 
+ com.rgm.autochickens.StaticActivity.boss2([context],[proxy])
+com.rgm.autochickens.FloatingModMenuService.boss([context],[proxy])
